@@ -15,7 +15,7 @@ if $INSTALL_PACKAGES; then
 
 # Require apt to install stuff
 # TODO: Upgrade to use arbitrary package manager
-if which apt; then
+if ! which apt; then
   echo "apt command required.";
   exit;
 fi
