@@ -3,9 +3,15 @@
 # Fail if any step fails
 set -e;
 
+# Turn parts of the setup script on and off
+INSTALL_PACKAGES=false
+
+
 ###############################################################################
 # Install packages
 ###############################################################################
+
+if $INSTALL_PACKAGES; then
 
 # Require apt to install stuff
 # TODO: Upgrade to use arbitrary package manager
@@ -27,12 +33,14 @@ PACKAGES=(
   jq
 )
 
-apt install ${PACKAGES[@]}
+apt install ${PACKAGES[@]};
 
 
 # Install miscellaneous packages
 # Install ttyd
 wget \
   --output-document "/usr/local/bin/ttyd" \
-  "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64"
-chmod +x "/usr/local/bin/ttyd"
+  "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
+chmod +x "/usr/local/bin/ttyd";
+
+fi # $INSTALL_PACKAGES
