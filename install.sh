@@ -1,10 +1,15 @@
 #!/bin/bash
 
+###############################################################################
+# NOTE: Must be run with `sudo`
+###############################################################################
+
 # Fail if any step fails
 set -e;
 
 # Turn parts of the setup script on and off
 INSTALL_PACKAGES=true
+
 
 
 ###############################################################################
@@ -21,8 +26,18 @@ if ! which apt; then
 fi
 
 
+# Update all pacakges, including python3 pip
+apt update && apt --yes upgrade;
+if which python3; then
+  python3 -m pip install --upgrade pip;
+fi
+
+
 # List of packages to apt install
 PACKAGES=(
+  curl
+  wget
+  gcc
   tmux
   vim
   pandoc
@@ -32,9 +47,12 @@ PACKAGES=(
   texlive texlive-extra-utils texlive-latex-extra texlive-pictures poppler-utils
   jq
   imagemagick
+  sopwith
+  netcat
+  nmap
 )
 
-apt install ${PACKAGES[@]};
+apt --yes install ${PACKAGES[@]};
 
 
 # Install miscellaneous packages
@@ -45,3 +63,18 @@ wget \
 chmod +x "/usr/local/bin/ttyd";
 
 fi # $INSTALL_PACKAGES
+
+
+###############################################################################
+# TODO
+###############################################################################
+
+# ~/.sowpithrc
+# ~/.sopwith/keys
+# ~/.tmux.conf
+# ~/.bashrc
+# ~/.vimrc
+# custom scripts
+# dotfile backup script
+# crontab
+# upgrade pip
