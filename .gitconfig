@@ -1,0 +1,9 @@
+[user]
+  name = Jacob Strieb
+  email = jstrieb@users.noreply.github.com
+[alias]
+  adog = log --all --decorate --oneline --graph
+[checkout]
+  defaultRemote = origin
+[init]
+  defaultBranch = main

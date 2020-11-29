@@ -9,6 +9,7 @@ set -e;
 
 # Turn parts of the setup script on and off
 INSTALL_PACKAGES=true
+CONFIGURE_GIT=true
 
 
 
@@ -25,13 +26,11 @@ if ! which apt; then
   exit;
 fi
 
-
 # Update all pacakges, including python3 pip
 apt update && apt --yes upgrade;
 if which python3; then
   python3 -m pip install --upgrade pip;
 fi
-
 
 # List of packages to apt install
 PACKAGES=(
@@ -50,10 +49,10 @@ PACKAGES=(
   sopwith
   netcat
   nmap
+  git
 )
 
 apt --yes install ${PACKAGES[@]};
-
 
 # Install miscellaneous packages
 # Install ttyd
@@ -63,6 +62,18 @@ wget \
 chmod +x "/usr/local/bin/ttyd";
 
 fi # $INSTALL_PACKAGES
+
+
+###############################################################################
+# Configure Git
+###############################################################################
+
+if $CONFIGURE_GIT; then
+
+cat ~/.gitconfig .gitconfig > ~/.gitconfig
+
+fi # $CONFIGURE_GIT
+
 
 
 ###############################################################################
@@ -78,3 +89,4 @@ fi # $INSTALL_PACKAGES
 # dotfile backup script
 # crontab
 # upgrade pip
+
