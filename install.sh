@@ -4,7 +4,7 @@
 set -e;
 
 # Turn parts of the setup script on and off
-INSTALL_PACKAGES=false
+INSTALL_PACKAGES=true
 
 
 ###############################################################################
@@ -31,6 +31,7 @@ PACKAGES=(
   calibre
   texlive texlive-extra-utils texlive-latex-extra texlive-pictures poppler-utils
   jq
+  imagemagick
 )
 
 apt install ${PACKAGES[@]};
