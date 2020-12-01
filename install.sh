@@ -50,16 +50,18 @@ PACKAGES=(
   netcat
   nmap
   git
+  gimp
+  inkscape
 )
 
-apt --yes install ${PACKAGES[@]};
+sudo apt --yes install ${PACKAGES[@]};
 
 # Install miscellaneous packages
 # Install ttyd
-wget \
+sudo wget \
   --output-document "/usr/local/bin/ttyd" \
   "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
-chmod +x "/usr/local/bin/ttyd";
+sudo chmod +x "/usr/local/bin/ttyd";
 
 fi # $INSTALL_PACKAGES
 
