@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###############################################################################
-# NOTE: Must be run with `sudo`
+# NOTE: Must be run in the dotfiles directory
 ###############################################################################
 
 # Fail if any step fails
@@ -12,6 +12,8 @@ INSTALL_PACKAGES=true
 CONFIGURE_GIT=true
 CONFIGURE_BASH=true
 CONFIGURE_MOTD=true
+CONFIGURE_TMUX=true
+CONFIGURE_VIM=true
 
 
 
@@ -61,6 +63,7 @@ sudo apt --yes install ${PACKAGES[@]};
 
 # Install miscellaneous packages
 # Install ttyd
+# NOTE: Uses the x86_64 binary for ttyd
 sudo wget \
   --output-document "/usr/local/bin/ttyd" \
   "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
@@ -77,7 +80,7 @@ fi # $INSTALL_PACKAGES
 
 if $CONFIGURE_GIT; then
 
-cat ~/.gitconfig .gitconfig > ~/.gitconfig
+cat .gitconfig >> ~/.gitconfig
 
 fi # $CONFIGURE_GIT
 
@@ -89,7 +92,7 @@ fi # $CONFIGURE_GIT
 
 if $CONFIGURE_BASH; then
 
-cat ~/.bashrc .bashrc > ~/.bashrc
+cat .bashrc >> ~/.bashrc
 
 fi # $CONFIGURE_BASH
 
@@ -108,13 +111,33 @@ fi # $CONFIGURE_MOTD
 
 
 ###############################################################################
+# Configure tmux
+###############################################################################
+
+if $CONFIGURE_TMUX; then
+
+cat .tmux.conf >> ~/.tmux.conf
+
+fi # $CONFIGURE_TMUX
+
+
+
+###############################################################################
+# Configure Vim
+###############################################################################
+
+if $CONFIGURE_VIM; then
+
+cat .vimrc >> ~/.vimrc
+
+fi # $CONFIGURE_VIM
+
+
+
+###############################################################################
 # TODO
 ###############################################################################
 
 # ~/.sowpithrc
 # ~/.sopwith/keys
-# ~/.tmux.conf
-# ~/.vimrc
 # custom scripts
-# dotfile backup script
-# crontab
