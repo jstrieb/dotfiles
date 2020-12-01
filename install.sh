@@ -31,9 +31,9 @@ if ! which apt; then
 fi
 
 # Update all pacakges, including python3 pip
-apt update && apt --yes upgrade;
+sudo apt update && sudo apt --yes upgrade;
 if which python3; then
-  python3 -m pip install --upgrade pip;
+  sudo python3 -m pip install --upgrade pip;
 fi
 
 # List of packages to apt install
@@ -63,11 +63,13 @@ sudo apt --yes install ${PACKAGES[@]};
 
 # Install miscellaneous packages
 # Install ttyd
-# NOTE: Uses the x86_64 binary for ttyd
-sudo wget \
-  --output-document "/usr/local/bin/ttyd" \
-  "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
-sudo chmod +x "/usr/local/bin/ttyd";
+if [ ! -f "/usr/local/bin/ttyd" ]; then
+  # NOTE: Uses the x86_64 binary for ttyd
+  sudo wget \
+    --output-document "/usr/local/bin/ttyd" \
+    "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
+  sudo chmod +x "/usr/local/bin/ttyd";
+fi
 
 # Install mlton/smlnj
 
