@@ -11,6 +11,7 @@ set -e;
 INSTALL_PACKAGES=true
 CONFIGURE_GIT=true
 CONFIGURE_BASH=true
+CONFIGURE_MOTD=true
 
 
 
@@ -65,6 +66,8 @@ sudo wget \
   "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
 sudo chmod +x "/usr/local/bin/ttyd";
 
+# Install mlton/smlnj
+
 fi # $INSTALL_PACKAGES
 
 
@@ -93,6 +96,18 @@ fi # $CONFIGURE_BASH
 
 
 ###############################################################################
+# Configure MOTD
+###############################################################################
+
+if $CONFIGURE_MOTD; then
+
+cat motd | sudo tee --append /etc/motd > /dev/null
+
+fi # $CONFIGURE_MOTD
+
+
+
+###############################################################################
 # TODO
 ###############################################################################
 
@@ -103,5 +118,3 @@ fi # $CONFIGURE_BASH
 # custom scripts
 # dotfile backup script
 # crontab
-# upgrade pip
-
