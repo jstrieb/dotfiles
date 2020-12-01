@@ -10,6 +10,7 @@ set -e;
 # Turn parts of the setup script on and off
 INSTALL_PACKAGES=true
 CONFIGURE_GIT=true
+CONFIGURE_BASH=true
 
 
 
@@ -52,6 +53,7 @@ PACKAGES=(
   git
   gimp
   inkscape
+  binutils
 )
 
 sudo apt --yes install ${PACKAGES[@]};
@@ -79,13 +81,24 @@ fi # $CONFIGURE_GIT
 
 
 ###############################################################################
+# Configure Bash
+###############################################################################
+
+if $CONFIGURE_BASH; then
+
+cat ~/.bashrc .bashrc > ~/.bashrc
+
+fi # $CONFIGURE_BASH
+
+
+
+###############################################################################
 # TODO
 ###############################################################################
 
 # ~/.sowpithrc
 # ~/.sopwith/keys
 # ~/.tmux.conf
-# ~/.bashrc
 # ~/.vimrc
 # custom scripts
 # dotfile backup script
