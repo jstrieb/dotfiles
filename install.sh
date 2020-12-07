@@ -57,6 +57,7 @@ PACKAGES=(
   gimp
   inkscape
   binutils
+  htop
 )
 
 sudo apt --yes install ${PACKAGES[@]};
