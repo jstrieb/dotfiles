@@ -58,6 +58,10 @@ PACKAGES=(
   inkscape
   binutils
   htop
+  tor
+  xterm
+  mlton
+  smlnj
 )
 
 sudo apt --yes install ${PACKAGES[@]};
@@ -71,8 +75,6 @@ if [ ! -f "/usr/local/bin/ttyd" ]; then
     "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
   sudo chmod +x "/usr/local/bin/ttyd";
 fi
-
-# Install mlton/smlnj
 
 fi # $INSTALL_PACKAGES
 
