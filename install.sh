@@ -98,6 +98,7 @@ fi # $CONFIGURE_GIT
 if $CONFIGURE_BASH; then
 
 cat .bashrc >> ~/.bashrc
+cat .bash_profile >> ~/.bash_profile
 
 fi # $CONFIGURE_BASH
 
