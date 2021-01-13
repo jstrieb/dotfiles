@@ -62,6 +62,9 @@ PACKAGES=(
   xterm
   mlton
   smlnj
+  sqlite3
+  gdb
+  valgrind
 )
 
 sudo apt --yes install ${PACKAGES[@]};
@@ -74,6 +77,17 @@ if [ ! -f "/usr/local/bin/ttyd" ]; then
     --output-document "/usr/local/bin/ttyd" \
     "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
   sudo chmod +x "/usr/local/bin/ttyd";
+fi
+
+# Install pup
+if [ ! -f "/usr/local/bin/pup" ]; then
+  mkdir -p ~/Downloads;
+  cd ~/Downloads;
+  wget \
+    --output-document pup_v0.4.0_linux_amd64.zip \
+    "https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip";
+  unzip pup_v0.4.0_linux_amd64.zip;
+  sudo mv ./pup /usr/local/bin/pup;
 fi
 
 fi # $INSTALL_PACKAGES
