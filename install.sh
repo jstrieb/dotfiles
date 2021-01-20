@@ -65,6 +65,11 @@ PACKAGES=(
   sqlite3
   gdb
   valgrind
+  socat
+  build-essential
+  exiftool
+  hashcat
+  neovim
 )
 
 sudo apt --yes install ${PACKAGES[@]};
@@ -143,12 +148,16 @@ fi # $CONFIGURE_TMUX
 
 
 ###############################################################################
-# Configure Vim
+# Configure Vim and Neovim
 ###############################################################################
 
 if $CONFIGURE_VIM; then
 
 cat .vimrc >> ~/.vimrc
+
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+echo 'alias vim="nvim"' >> ~/.bashrc
 
 fi # $CONFIGURE_VIM
 
