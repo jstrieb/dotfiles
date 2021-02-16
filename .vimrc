@@ -27,7 +27,7 @@ set incsearch  "Start searching immediately
 set scrolloff=5  "Never scroll off
 set wildmode=longest,list  "Better unix-like tab completion
 " set clipboard=unnamed  "Copy and paste from system clipboard
-set lazyredraw  "Don't redraw while running macros (faster)
+" set lazyredraw  "Don't redraw while running macros (faster)
 set wrap  "Visually wrap lines
 set linebreak  "Only wrap on 'good' characters for wrapping
 set backspace=indent,eol,start  "Better backspacing
@@ -55,3 +55,13 @@ autocmd FileType tex,text,markdown :set spell spelllang=en_us
 " NOTE: Doesn't disable paste mode from insert mode when already in paste mode
 inoremap <c-p> <esc>:set paste!<cr>i
 nnoremap <c-p> :set paste!<cr>
+
+" Map leader-c (\c) to auto-wrap the lines at 90 characters for typesetting
+nnoremap <leader>c v`[:'<,'> ! fold -w 90 -s<cr>
+
+" Set the cursor to always be a block in all modes (prevents flickering in
+" tmux/WSL)
+set guicursor+=i:block-iCursor
+
+nnoremap <leader><cr> :silent exec "!make"<cr>
+nnoremap <leader>] :!make<cr>
