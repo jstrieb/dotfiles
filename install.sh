@@ -39,10 +39,11 @@ fi
 # List of packages to apt install
 PACKAGES=(
   curl
+  zip
   wget
   gcc
   tmux
-  vim
+  # vim
   pandoc
   youtube-dl
   ffmpeg
@@ -80,7 +81,7 @@ if [ ! -f "/usr/local/bin/ttyd" ]; then
   # NOTE: Uses the x86_64 binary for ttyd
   sudo wget \
     --output-document "/usr/local/bin/ttyd" \
-    "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd_linux.x86_64";
+    "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64";
   sudo chmod +x "/usr/local/bin/ttyd";
 fi
 
@@ -155,9 +156,10 @@ if $CONFIGURE_VIM; then
 
 cat .vimrc >> ~/.vimrc
 
+mkdir -p ~/.vim
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
-echo 'alias vim="nvim"' >> ~/.bashrc
+# echo 'alias vim="nvim"' >> ~/.bashrc
 
 fi # $CONFIGURE_VIM
 
