@@ -96,6 +96,27 @@ if [ ! -f "/usr/local/bin/pup" ]; then
   sudo mv ./pup /usr/local/bin/pup;
 fi
 
+# Install figlet
+if [ ! -f "/usr/local/bin/figlet" ]; then
+  mkdir -p ~/Downloads;
+  cd ~/Downloads;
+  git clone https://github.com/cmatsuoka/figlet.git;
+  cd figlet/fonts;
+
+  # Download additional figlet fonts
+  curl "http://patorjk.com/software/taag/" \
+    | grep --only-matching "[[:alnum:]][[:alnum:][:space:]]*\.flf" \
+    | sort \
+    | uniq \
+    | sed "s/^\(.*\)/\"\1\"\n\"http:\/\/patorjk.com\/software\/taag\/fonts\/\1\"/g" \
+    | xargs -L 2 -P 16 \
+      curl --silent --output;
+  
+  cd ..;
+  make;
+  sudo make install;
+fi
+
 fi # $INSTALL_PACKAGES
 
 
