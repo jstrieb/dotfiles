@@ -41,7 +41,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Syntax highlighting and color scheme
 syntax on
 filetype plugin indent on
-colorscheme desert
+colorscheme koehler
 set number
 
 " Replace auto-complete keys
