@@ -71,9 +71,10 @@ PACKAGES=(
   exiftool
   hashcat
   neovim
+  openssh-server
 )
 
-sudo apt --yes install ${PACKAGES[@]};
+sudo apt --ignore-missing --yes install ${PACKAGES[@]};
 
 # Install miscellaneous packages
 # Install ttyd
