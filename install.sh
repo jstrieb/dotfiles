@@ -72,6 +72,7 @@ PACKAGES=(
   hashcat
   neovim
   openssh-server
+  ncdu
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
