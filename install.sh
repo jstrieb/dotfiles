@@ -100,7 +100,7 @@ fi
 # Install figlet
 if [ ! -f "/usr/local/bin/figlet" ]; then
   mkdir -p ~/Downloads;
-  cd ~/Downloads;
+  pushd ~/Downloads;
   git clone https://github.com/cmatsuoka/figlet.git;
   cd figlet/fonts;
 
@@ -116,6 +116,7 @@ if [ ! -f "/usr/local/bin/figlet" ]; then
   cd ..;
   make;
   sudo make install;
+  popd;
 fi
 
 fi # $INSTALL_PACKAGES
