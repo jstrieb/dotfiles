@@ -76,6 +76,7 @@ PACKAGES=(
   ncdu
   golang
   python3
+  grafx2
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
@@ -209,6 +210,4 @@ fi # $CONFIGURE_SOPWITH
 # TODO
 ###############################################################################
 
-# ~/.sowpithrc
-# ~/.sopwith/keys
 # custom scripts
