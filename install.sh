@@ -73,6 +73,8 @@ PACKAGES=(
   neovim
   openssh-server
   ncdu
+  golang
+  python3
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
