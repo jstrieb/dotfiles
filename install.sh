@@ -14,6 +14,7 @@ CONFIGURE_BASH=true
 CONFIGURE_MOTD=true
 CONFIGURE_TMUX=true
 CONFIGURE_VIM=true
+CONFIGURE_SOPWITH=true
 
 
 
@@ -188,6 +189,19 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 # echo 'alias vim="nvim"' >> ~/.bashrc
 
 fi # $CONFIGURE_VIM
+
+
+
+###############################################################################
+# Configure Sopwith
+###############################################################################
+
+if $CONFIGURE_SOPWITH; then
+
+cat .sopwithrc > ~/.sopwithrc
+cp -r .sopwith ~/.sopwith
+
+fi # $CONFIGURE_SOPWITH
 
 
 

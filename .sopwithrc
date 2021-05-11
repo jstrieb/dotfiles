@@ -1,0 +1,13 @@
+# sopwith config file
+# created by SDL Sopwith 1.8.3
+
+conf_missiles		1	# missiles
+conf_solidground	0	# solid ground
+conf_hudsplats		1	# HUD splats
+conf_wounded		1	# wounded planes
+conf_animals		1	# oxen and birds
+conf_harrykeys		0	# harry keys mode
+vid_fullscreen		1	# run fullscreen
+vid_double_size		0	# scale window by 2x
+
+

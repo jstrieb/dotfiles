@@ -1,0 +1,11 @@
+pullup o
+pulldown p
+flip =
+bomb e
+fire d
+home h
+missile r
+starburst s
+accel w
+decel q
+sound x

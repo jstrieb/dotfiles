@@ -1,0 +1,11 @@
+pullup ,
+pulldown /
+flip . 
+bomb b
+fire  
+home h
+missile m
+starburst v
+accel x
+decel z
+sound s
