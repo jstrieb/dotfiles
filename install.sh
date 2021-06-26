@@ -77,6 +77,8 @@ PACKAGES=(
   golang
   python3
   grafx2
+  p7zip
+  magic-wormhole
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
