@@ -77,7 +77,7 @@ PACKAGES=(
   golang
   python3
   grafx2
-  p7zip
+  p7zip-full
   magic-wormhole
 )
 
