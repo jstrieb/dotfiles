@@ -14,6 +14,7 @@ CONFIGURE_BASH=true
 CONFIGURE_MOTD=true
 CONFIGURE_TMUX=true
 CONFIGURE_VIM=true
+CONFIGURE_GDB=true
 CONFIGURE_SOPWITH=true
 
 
@@ -205,6 +206,18 @@ cat .sopwithrc > ~/.sopwithrc
 cp -r .sopwith ~/.sopwith
 
 fi # $CONFIGURE_SOPWITH
+
+
+
+###############################################################################
+# Configure GDB
+###############################################################################
+
+if $CONFIGURE_GDB; then
+
+cat .gdbinit >> ~/.gdbinit
+
+fi # $CONFIGURE_GDB
 
 
 

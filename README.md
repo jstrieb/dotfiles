@@ -5,6 +5,7 @@ Included dotfiles are used for configuring common programs:
 - NeoVim
 - Bash
 - Git
+- GDB
 - tmux
 - Alacritty
 - SDL Sopwith
@@ -15,6 +16,7 @@ dotfiles
 ├── .bashrc
 ├── .gitconfig
 ├── .gitignore
+├── .gdbinit
 ├── .sopwith
 │   ├── keys.original
 │   └── keys.pocketchip
