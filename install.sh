@@ -32,11 +32,8 @@ if ! which apt; then
   exit;
 fi
 
-# Update all pacakges, including python3 pip
+# Update all pacakges
 sudo apt update && sudo apt --yes upgrade;
-if which python3; then
-  sudo python3 -m pip install --upgrade pip;
-fi
 
 # List of packages to apt install
 PACKAGES=(
@@ -77,12 +74,23 @@ PACKAGES=(
   ncdu
   golang
   python3
+  python3-pip
   grafx2
   p7zip-full
   magic-wormhole
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
+
+# Update python3 pip and install pip packages
+if which python3; then
+  PIP_PACKAGES=(
+    pip
+    setuptools
+    wheel
+  )
+  python3 -m pip install --upgrade "${PIP_PACKAGES[@]}";
+fi
 
 # Install miscellaneous packages
 # Install ttyd
