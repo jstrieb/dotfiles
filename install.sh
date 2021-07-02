@@ -105,12 +105,13 @@ fi
 # Install pup
 if [ ! -f "/usr/local/bin/pup" ]; then
   mkdir -p ~/Downloads;
-  cd ~/Downloads;
+  pushd ~/Downloads;
   wget \
     --output-document pup_v0.4.0_linux_amd64.zip \
     "https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip";
   unzip pup_v0.4.0_linux_amd64.zip;
   sudo mv ./pup /usr/local/bin/pup;
+  popd;
 fi
 
 # Install figlet
