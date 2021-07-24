@@ -44,7 +44,7 @@ PACKAGES=(
   tmux
   # vim
   pandoc
-  youtube-dl
+  # youtube-dl  # Download from pip below -- usually more up to date than apt
   ffmpeg
   calibre
   texlive texlive-extra-utils texlive-latex-extra texlive-pictures poppler-utils
@@ -78,6 +78,7 @@ PACKAGES=(
   grafx2
   p7zip-full
   magic-wormhole
+  links
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
@@ -88,6 +89,7 @@ if which python3; then
     pip
     setuptools
     wheel
+    youtube-dl
   )
   python3 -m pip install --upgrade "${PIP_PACKAGES[@]}";
 fi
