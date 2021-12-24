@@ -76,5 +76,14 @@ define pstep
 end
 
 
+# Load the 32 bit versions of these functions
+define load32
+  source ~/.gdbinit-32
+end
+
+
 # Remove coloring (hard to see on my terminal)
 # set style enabled off
+
+# Don't prompt for pagination
+set pagination off

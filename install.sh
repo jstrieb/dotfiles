@@ -228,6 +228,10 @@ fi # $CONFIGURE_SOPWITH
 if $CONFIGURE_GDB; then
 
 cat .gdbinit >> ~/.gdbinit
+sed 's/\$r\(\w\w\)/\$e\1/g' .gdbinit \
+  | sed 's/\/1xg/\/1xw/g' \
+  | sed 's/8/4/g' \
+  >> ~/.gdbinit-32
 
 fi # $CONFIGURE_GDB
 
