@@ -25,3 +25,5 @@ alias latest="ls -rt | tail"
 
 alias ttyd-run="ttyd --readonly --port 6969 tmux new -A -s ttyd /bin/bash &> /dev/null"
 alias ttyd-attach="tmux new -A -s ttyd"
+
+alias less="less -X"
