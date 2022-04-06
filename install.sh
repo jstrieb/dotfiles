@@ -8,14 +8,15 @@
 set -e;
 
 # Turn parts of the setup script on and off
-INSTALL_PACKAGES=true
+INSTALL_PACKAGES=false
 CONFIGURE_GIT=true
 CONFIGURE_BASH=true
 CONFIGURE_MOTD=true
 CONFIGURE_TMUX=true
 CONFIGURE_VIM=true
 CONFIGURE_GDB=true
-CONFIGURE_SOPWITH=true
+CONFIGURE_I3=false
+CONFIGURE_SOPWITH=false
 
 
 
@@ -131,7 +132,7 @@ if [ ! -f "/usr/local/bin/figlet" ]; then
     | sed "s/^\(.*\)/\"\1\"\n\"http:\/\/patorjk.com\/software\/taag\/fonts\/\1\"/g" \
     | xargs -L 2 -P 16 \
       curl --silent --output;
-  
+
   cd ..;
   make;
   sudo make install;
@@ -209,19 +210,6 @@ fi # $CONFIGURE_VIM
 
 
 ###############################################################################
-# Configure Sopwith
-###############################################################################
-
-if $CONFIGURE_SOPWITH; then
-
-cat .sopwithrc > ~/.sopwithrc
-cp -r .sopwith ~/.sopwith
-
-fi # $CONFIGURE_SOPWITH
-
-
-
-###############################################################################
 # Configure GDB
 ###############################################################################
 
@@ -234,6 +222,34 @@ sed 's/\$r\(\w\w\)/\$e\1/g' .gdbinit \
   >> ~/.gdbinit-32
 
 fi # $CONFIGURE_GDB
+
+
+
+###############################################################################
+# Configure i3
+###############################################################################
+
+if $CONFIGURE_I3; then
+
+mkdir -p ~/.config/i3
+mkdir -p ~/.config/i3status
+cat i3 >> ~/.config/i3/config
+cat i3status >> ~/.config/i3status/config
+
+fi # $CONFIGURE_I3
+
+
+
+###############################################################################
+# Configure Sopwith
+###############################################################################
+
+if $CONFIGURE_SOPWITH; then
+
+cat .sopwithrc > ~/.sopwithrc
+cp -r .sopwith ~/.sopwith
+
+fi # $CONFIGURE_SOPWITH
 
 
 
