@@ -8,24 +8,27 @@ Included dotfiles are used for configuring common programs:
 - GDB
 - tmux
 - Alacritty
+- i3
 - SDL Sopwith
 
 ```
 dotfiles
+├── alacritty.yml
 ├── .bash_profile
 ├── .bashrc
+├── .gdbinit
 ├── .gitconfig
 ├── .gitignore
-├── .gdbinit
+├── i3
+├── i3status
+├── install.sh
+├── motd
 ├── .sopwith
 │   ├── keys.original
 │   └── keys.pocketchip
 ├── .sopwithrc
 ├── .tmux.conf
-├── .vimrc
-├── alacritty.yml
-├── install.sh
-└── motd
+└── .vimrc
 ```
 
 ## Quick Start
