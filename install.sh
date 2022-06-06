@@ -139,6 +139,19 @@ if [ ! -f "/usr/local/bin/figlet" ]; then
   popd;
 fi
 
+# Install binwalk
+if [ ! which binwalk ]; then
+  mkdir -p ~/Downloads;
+  pushd ~/Downloads;
+
+  git clone "https://github.com:ReFirmLabs/binwalk";
+  cd binwalk;
+  bash deps.sh --yes;
+  sudo python3 -m pip install .;
+
+  popd;
+fi
+
 fi # $INSTALL_PACKAGES
 
 
