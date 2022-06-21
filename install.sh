@@ -80,6 +80,7 @@ PACKAGES=(
   p7zip-full
   magic-wormhole
   links
+  makeself
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
