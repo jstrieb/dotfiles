@@ -81,6 +81,7 @@ PACKAGES=(
   magic-wormhole
   links
   makeself
+  aircrack-ng
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
