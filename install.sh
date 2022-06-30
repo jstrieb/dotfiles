@@ -81,7 +81,8 @@ PACKAGES=(
   magic-wormhole
   links
   makeself
-  aircrack-ng
+  net-tools
+  aircrack-ng tshark reaver bully cowpatty pciutils
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
@@ -153,6 +154,18 @@ if [ ! which binwalk ]; then
 
   popd;
 fi
+
+# Install wifite
+if [ ! sudo which wifite ]; then
+  mkdir -p ~/Downloads;
+  pushd ~/Downloads;
+
+  git clone "https://github.com/derv82/wifite2.git";
+  cd wifite;
+  sudo python3 -m pip install .;
+  sudo python3 setup.py install;
+
+  popd;
 
 fi # $INSTALL_PACKAGES
 
