@@ -150,7 +150,7 @@ if [ ! which binwalk ]; then
   git clone "https://github.com:ReFirmLabs/binwalk";
   cd binwalk;
   bash deps.sh --yes;
-  sudo python3 -m pip install .;
+  sudo python3 setup.py install;
 
   popd;
 fi
@@ -161,8 +161,7 @@ if [ ! sudo which wifite ]; then
   pushd ~/Downloads;
 
   git clone "https://github.com/derv82/wifite2.git";
-  cd wifite;
-  sudo python3 -m pip install .;
+  cd wifite2;
   sudo python3 setup.py install;
 
   popd;
