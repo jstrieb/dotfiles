@@ -9,5 +9,9 @@
   defaultRemote = origin
 [init]
   defaultBranch = master
+[pull]
+	rebase = false
 [commit]
   verbose = true
+[branch]
+  sort = committerdate

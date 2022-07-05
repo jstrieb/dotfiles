@@ -17,7 +17,8 @@ set $mod Mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 6
+# font pango:DejaVu Sans Mono 6
+font pango:Overpass 7
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -41,7 +42,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm tmux
+# bindsym $mod+Return exec xterm tmux
+bindsym $mod+Return exec alacritty --command tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,7 +89,10 @@ bindsym $mod+Shift+bar split h
 bindsym $mod+Shift+s split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
+
+# replace fullscreen mode with Firefox
+bindsym $mod+f exec firefox
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
