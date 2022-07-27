@@ -1,0 +1,5 @@
+
+export FG_NORMAL="green"
+export BG_NORMAL="black"
+export FG_HIGHLIGHT="green"
+export BG_HIGHLIGHT="dark-gray"

@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+set_theme() {
+	echo "${1}set color_normal=${2}"
+	echo "${1}set menu_color_normal=${2}"
+	echo "${1}set menu_color_highlight=${3}"
+}
+
+if [ -z "${FG_NORMAL}" ]; then
+	FG_NORMAL="green"
+fi
+if [ -z "${BG_NORMAL}" ]; then
+	BG_NORMAL="black"
+fi
+if [ -z "${FG_HIGHLIGHT}" ]; then
+	FG_HIGHLIGHT="green"
+fi
+if [ -z "${BG_HIGHLIGHT}" ]; then
+	BG_HIGHLIGHT="dark-gray"
+fi
+
+if [ -z "${COLOR_NORMAL}" ]; then
+	COLOR_NORMAL="${FG_NORMAL}/${BG_NORMAL}"
+fi
+if [ -z "${COLOR_HIGHLIGHT}" ]; then
+	COLOR_HIGHLIGHT="${FG_HIGHLIGHT}/${BG_HIGHLIGHT}"
+fi
+
+set_theme "" "${COLOR_NORMAL}" "${COLOR_HIGHLIGHT}"

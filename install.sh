@@ -16,6 +16,7 @@ CONFIGURE_TMUX=true
 CONFIGURE_VIM=true
 CONFIGURE_GDB=true
 CONFIGURE_I3=false
+CONFIGURE_GRUB=false
 CONFIGURE_SOPWITH=false
 
 
@@ -200,7 +201,9 @@ fi # $CONFIGURE_BASH
 
 if $CONFIGURE_MOTD; then
 
-cat motd | sudo tee --append /etc/motd > /dev/null
+cat motd \
+  | sudo tee --append /etc/motd \
+  > /dev/null
 
 fi # $CONFIGURE_MOTD
 
@@ -264,6 +267,22 @@ cat i3 >> ~/.config/i3/config
 cat i3status >> ~/.config/i3status/config
 
 fi # $CONFIGURE_I3
+
+
+
+###############################################################################
+# Configure GRUB
+###############################################################################
+
+if $CONFIGURE_GRUB; then
+
+cat grub/default \
+  | sudo tee --append /etc/default/grub \
+  > /dev/null
+sudo cp grub/42_colors /etc/grub.d/
+sudo update-grub
+
+fi # $CONFIGURE_GRUB
 
 
 
