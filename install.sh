@@ -144,7 +144,7 @@ if [ ! -f "/usr/local/bin/figlet" ]; then
 fi
 
 # Install binwalk
-if [ ! which binwalk ]; then
+if ! which binwalk; then
   mkdir -p ~/Downloads;
   pushd ~/Downloads;
 
@@ -157,7 +157,7 @@ if [ ! which binwalk ]; then
 fi
 
 # Install wifite
-if [ ! sudo which wifite ]; then
+if ! sudo which wifite; then
   mkdir -p ~/Downloads;
   pushd ~/Downloads;
 
@@ -166,6 +166,7 @@ if [ ! sudo which wifite ]; then
   sudo python3 setup.py install;
 
   popd;
+fi
 
 fi # $INSTALL_PACKAGES
 
