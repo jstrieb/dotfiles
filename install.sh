@@ -84,6 +84,7 @@ PACKAGES=(
   makeself
   net-tools
   aircrack-ng tshark reaver bully cowpatty pciutils
+  rclone
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
