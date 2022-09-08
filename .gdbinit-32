@@ -1,0 +1,137 @@
+# Pretty-print the stack centered around the base pointer
+define stack
+  if ($argc > 0)
+    set $total = $arg0 / 2
+  else
+    if ($esp == $ebp)
+      set $total = 16
+    else
+      set $total = ($ebp - $esp) / 4 + 2
+    end
+  end
+  if ($argc > 1)
+    set $mid = $arg1
+  else
+    set $mid = $ebp
+  end
+
+  set $i = -1 * $total
+  set $space_delta = 6
+  while ($i < $total)
+    set $spaces = 42
+    set $addr = ($mid - ($i * 0x4))
+
+    if ($addr == (void *)$ebp)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$esp)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$eip)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$eax)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$edi)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$esi)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$edx)
+      set $spaces = $spaces + $space_delta
+    end
+    if ($addr == (void *)$ecx)
+      set $spaces = $spaces + $space_delta
+    end
+
+    if ($addr == (void *)$ebp)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< ebp\r"
+    end
+    if ($addr == (void *)$esp)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< esp\r"
+    end
+    if ($addr == (void *)$eip)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< eip\r"
+    end
+    if ($addr == (void *)$eax)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< eax\r"
+    end
+    if ($addr == (void *)$edi)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< edi\r"
+    end
+    if ($addr == (void *)$esi)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< esi\r"
+    end
+    if ($addr == (void *)$edx)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< edx\r"
+    end
+    if ($addr == (void *)$ecx)
+      set $spaces = $spaces - $space_delta
+      eval "printf \"%%%ds\", \"%s\"", $spaces, "< ecx\r"
+    end
+
+    if ($addr < (void *)$ebp)
+      printf "-%3x(ebp)  ", $ebp - $addr
+    else
+      if ($addr > (void *)$ebp)
+        printf "+%3x(ebp)  ", $addr - $ebp
+      else
+        printf "==> (ebp)  "
+      end
+    end
+
+    x /1xw $addr
+    set $i = $i + 1
+  end
+end
+
+
+# Print the disassembly (works even during stack execution)
+define pdisas
+  if ($argc == 0)
+    set $lines = 32
+  else
+    set $lines = $arg0
+  end
+
+  disas $eip - ($lines / 2), +$lines
+end
+
+
+# Take a step, and then print the disassembly (works even during stack execution)
+define pstep
+  if ($argc == 0)
+    set $lines = 32
+  else
+    set $lines = $arg0
+  end
+
+  ni
+  disas $eip - ($lines / 2), +$lines
+end
+
+define psi
+  ni
+  x /16i $eip
+end
+
+
+# Load the 32 bit versions of these functions
+define load32
+  source ~/.gdbinit-32
+end
+
+
+# Remove coloring (hard to see on my terminal)
+# set style enabled off
+
+set pagination off
