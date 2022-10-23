@@ -5,6 +5,7 @@
 	ui = auto
 [alias]
   adog = log --all --decorate --oneline --graph
+  difflog = log --all --decorate -c
 [checkout]
   defaultRemote = origin
 [init]
