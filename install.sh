@@ -85,6 +85,9 @@ PACKAGES=(
   net-tools
   aircrack-ng tshark reaver bully cowpatty pciutils
   rclone
+  ripgrep
+  bat
+  fd-find
   qemu binfmt-support qemu-user-static
   qemu-system-arm qemu-system-mips qemu-system-ppc qemu-system-x86 qemu-system-sparc
 )
