@@ -40,3 +40,13 @@ alias ttyd-run="ttyd --readonly --port 6969 tmux new -A -s ttyd /bin/bash &> /de
 alias ttyd-attach="tmux new -A -s ttyd"
 
 alias less="less -X"
+
+function sploit() {
+  python3 -c "import sys, struct; \
+    addr = lambda x: struct.pack('<I', x); \
+    sys.stdout.buffer.write(${1})"
+}
+
+function godoc() {
+  go doc -all "${1}" | less -X
+}
