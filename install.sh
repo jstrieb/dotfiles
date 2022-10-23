@@ -62,7 +62,7 @@ PACKAGES=(
   htop
   tor
   xterm
-  mlton
+  # mlton
   smlnj
   sqlite3
   gdb
@@ -149,9 +149,9 @@ if ! which binwalk; then
   mkdir -p ~/Downloads;
   pushd ~/Downloads;
 
-  git clone "https://github.com:ReFirmLabs/binwalk";
+  git clone "https://github.com/ReFirmLabs/binwalk.git";
   cd binwalk;
-  bash deps.sh --yes;
+  bash deps.sh --yes || true;
   sudo python3 setup.py install;
 
   popd;
