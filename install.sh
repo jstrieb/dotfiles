@@ -85,6 +85,8 @@ PACKAGES=(
   net-tools
   aircrack-ng tshark reaver bully cowpatty pciutils
   rclone
+  qemu binfmt-support qemu-user-static
+  qemu-system-arm qemu-system-mips qemu-system-ppc qemu-system-x86 qemu-system-sparc
 )
 
 sudo apt --ignore-missing --yes install ${PACKAGES[@]};
