@@ -74,7 +74,6 @@ PACKAGES=(
   neovim
   openssh-server
   ncdu
-  golang
   python3
   python3-pip
   grafx2
