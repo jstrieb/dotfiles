@@ -129,14 +129,17 @@ if [ ! -f "/usr/local/bin/figlet" ]; then
   git clone https://github.com/cmatsuoka/figlet.git;
   cd figlet/fonts;
 
+  # TODO: Fix dead link
   # Download additional figlet fonts
-  curl "http://patorjk.com/software/taag/" \
-    | grep --only-matching "[[:alnum:]][[:alnum:][:space:]]*\.flf" \
-    | sort \
-    | uniq \
-    | sed "s/^\(.*\)/\"\1\"\n\"http:\/\/patorjk.com\/software\/taag\/fonts\/\1\"/g" \
-    | xargs -L 2 -P 16 \
-      curl --silent --output;
+  if false; then
+    curl "http://patorjk.com/software/taag/" \
+      | grep --only-matching "[[:alnum:]][[:alnum:][:space:]]*\.flf" \
+      | sort \
+      | uniq \
+      | sed "s/^\(.*\)/\"\1\"\n\"http:\/\/patorjk.com\/software\/taag\/fonts\/\1\"/g" \
+      | xargs -L 2 -P 16 \
+        curl --silent --output;
+  fi
 
   cd ..;
   make;
